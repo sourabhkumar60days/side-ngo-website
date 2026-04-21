@@ -1,0 +1,56 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "UBSrkRB5sOjcnl17rZOEo"
+uri = "file://attached_assets/stock_images/indian-village_1.jpg"
+type = "image"
+title = "Option 1 (currently used)"
+
+[[outputs]]
+id = "njMO-QHJ_8F1JI1ahrfGT"
+uri = "file://attached_assets/stock_images/indian-village_2.jpg"
+type = "image"
+title = "Option 2"
+
+[[outputs]]
+id = "tLAWTPxTCsJM18fv1If5k"
+uri = "file://attached_assets/stock_images/indian-village_3.jpg"
+type = "image"
+title = "Option 3"
+
+[[outputs]]
+id = "PwR7wdE976vFKrsxWGdho"
+uri = "file://attached_assets/stock_images/indian-women-tailoring_1.jpg"
+type = "image"
+title = "Option 1 — Tailoring / Sewing"
+
+[[outputs]]
+id = "HXP3uOhWxzIDzwSzDtjSH"
+uri = "file://attached_assets/stock_images/indian-women-tailoring_2.jpg"
+type = "image"
+title = "Option 2 — Tailoring / Sewing"
+
+[[outputs]]
+id = "pWi_76f8O3RnT2-6l8iEo"
+uri = "file://attached_assets/stock_images/indian-women-tailoring_3.jpg"
+type = "image"
+title = "Option 3 — Tailoring / Sewing"
+
+[[outputs]]
+id = "6UknopB7NFrFwfGizveA7"
+uri = "file://attached_assets/stock_images/indian-kids-studying_1.jpg"
+type = "image"
+title = "Option 1 — Indian Children Studying"
+
+[[outputs]]
+id = "Npf4PGZWhEghwT6BHI9JJ"
+uri = "file://attached_assets/stock_images/indian-kids-studying_2.jpg"
+type = "image"
+title = "Option 2 — Indian Children Studying"
+
+[[outputs]]
+id = "QlEGxwkYN3ASkwBOaDWXr"
+uri = "file://attached_assets/stock_images/indian-kids-studying_3.jpg"
+type = "image"
+title = "Option 3 — Indian Children Studying"

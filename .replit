@@ -1,0 +1,41 @@
+modules = ["nodejs-24", "postgresql-16"]
+
+[[artifacts]]
+id = "artifacts/api-server"
+
+[[artifacts]]
+id = "artifacts/mockup-sandbox"
+
+[deployment]
+router = "application"
+deploymentTarget = "autoscale"
+
+[deployment.postBuild]
+args = ["pnpm", "store", "prune"]
+env = { "CI" = "true" }
+
+[workflows]
+runButton = "Project"
+
+[agent]
+stack = "PNPM_WORKSPACE"
+expertMode = true
+
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 20000
+
+[nix]
+channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+CLOUDINARY_CLOUD_NAME = "dvm1tjgth"
+CLOUDINARY_API_KEY = "266345774416217"
+CLOUDINARY_API_SECRET = "z0ZyrQS9TAQ9aRAKwfV3mkxIuh0"
+ADMIN_PASSWORD = "Side@admin2024"
+SMTP_HOST = "smtp.gmail.com"
+SMTP_PORT = "587"
+SMTP_USER = "side.ngo.official@gmail.com"
+SMTP_FROM = "SIDE NGO <side.ngo.official@gmail.com>"

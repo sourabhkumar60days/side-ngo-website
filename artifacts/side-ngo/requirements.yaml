@@ -1,0 +1,24 @@
+packages:
+  "framer-motion": "For page transitions, scroll animations, and fluid UI interactions."
+  "react-hook-form": "For robust form handling in volunteer, checkout, and admin forms."
+  "@hookform/resolvers": "For Zod schema validation integration with react-hook-form."
+  "date-fns": "For elegant date formatting in the events section."
+
+images:
+  - path: "artifacts/side-ngo/public/images/hero-home.png"
+    description: "A beautiful, uplifting illustration of diverse women and children learning and smiling together. Soft pastel colors (pink, mint, lavender), modern minimal vector art style, emotional and trustworthy, highly polished."
+    aspect_ratio: "16:9"
+  - path: "artifacts/side-ngo/public/images/hero-about.png"
+    description: "An inspiring abstract illustration showing community support, holding hands, and growth. Warm, soft pastel tones, conveying hope and integrated development."
+    aspect_ratio: "16:9"
+  - path: "artifacts/side-ngo/public/images/hero-products.png"
+    description: "A flat-lay artistic illustration of handmade crafts, candles, and woven items on a soft pastel background. Professional, inviting, clean aesthetic."
+    aspect_ratio: "16:9"
+  - path: "artifacts/side-ngo/public/images/pattern-bg.png"
+    description: "A seamless, subtle, very light geometric pattern in soft pastel pink and mint green for background texture."
+    aspect_ratio: "1:1"
+
+notes:
+  - Admin authentication relies on a session cookie set by /api/admin/login.
+  - Cart state is managed via React Context and persisted in localStorage.
+  - API hooks are imported from @workspace/api-client-react.
