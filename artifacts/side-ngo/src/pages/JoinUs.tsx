@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { CheckCircle2, HeartHandshake, Loader2, Mail, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { apiUrl } from '@/lib/api';
 
 const volunteerSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -26,8 +27,7 @@ export default function JoinUs() {
   const onSubmit = async (data: VolunteerForm) => {
     setSubmitError('');
     try {
-      const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
-      const res = await fetch(`${BASE}/api/volunteer`, {
+      const res = await fetch(apiUrl("/api/volunteer"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

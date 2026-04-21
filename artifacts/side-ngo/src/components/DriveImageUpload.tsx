@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Upload, X, Loader2, Link } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 interface Props {
   value: string;
@@ -10,13 +11,11 @@ interface Props {
   placeholder?: string;
 }
 
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
-
 async function uploadFile(file: File, folderPath: string[]): Promise<string> {
   const form = new FormData();
   form.append("file", file);
   form.append("folder", JSON.stringify(folderPath));
-  const res = await fetch(`${BASE}/api/upload`, { method: "POST", body: form });
+  const res = await fetch(apiUrl("/api/upload"), { method: "POST", body: form });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
     throw new Error(err.error || "Upload failed");

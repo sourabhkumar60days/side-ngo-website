@@ -4,8 +4,7 @@ import { useOrders } from '@/hooks/use-orders';
 import { useQueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { Trash2, ChevronDown, Package, Mail, Phone, MapPin, ShoppingBag } from 'lucide-react';
-
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+import { apiUrl } from '@/lib/api';
 
 const STATUS_CONFIG: Record<string, { label: string; bg: string; text: string }> = {
   pending:    { label: 'Pending',    bg: 'bg-orange-100', text: 'text-orange-700' },
@@ -35,7 +34,7 @@ export default function AdminOrders() {
   async function updateStatus(id: number, status: string) {
     setUpdating(id);
     try {
-      await fetch(`${BASE}/api/orders/${id}`, {
+      await fetch(apiUrl(`/api/orders/${id}`), {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -51,7 +50,7 @@ export default function AdminOrders() {
     if (!confirm('Delete this order permanently?')) return;
     setDeleting(id);
     try {
-      await fetch(`${BASE}/api/orders/${id}`, {
+      await fetch(apiUrl(`/api/orders/${id}`), {
         method: 'DELETE',
         credentials: 'include',
       });
