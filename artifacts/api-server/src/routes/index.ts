@@ -1,6 +1,3 @@
-router.get("/ping", (req, res) => {
-  res.send("pong");
-});
 import { Router, type IRouter } from "express";
 import healthRouter from "./health";
 import eventsRouter from "./events";
@@ -12,7 +9,12 @@ import settingsRouter from "./settings";
 import volunteerRouter from "./volunteer";
 import uploadRouter from "./upload";
 
-const router: IRouter = Router();
+const router: IRouter = Router(); // ✅ FIRST create router
+
+// ✅ THEN use it
+router.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 router.use(healthRouter);
 router.use("/events", eventsRouter);
