@@ -9,26 +9,9 @@ import settingsRouter from "./settings";
 import volunteerRouter from "./volunteer";
 import uploadRouter from "./upload";
 
-const router: IRouter = Router(); // ✅ FIRST create router
+const router: IRouter = Router();
 
-// ✅ THEN use it
-router.get("/ping", (req, res) => {
-  res.send("pong");
-});
-
-router.use(healthRouter);
-router.use("/events", eventsRouter);
-router.use("/team", teamRouter);
-router.use("/products", productsRouter);
-router.use("/orders", ordersRouter);
-router.use("/admin", adminRouter);
-router.use("/settings", settingsRouter);
-router.use("/volunteer", volunteerRouter);
-router.use("/upload", uploadRouter);
-
-export default router;
-
-
+// ✅ test route
 router.get("/test-brevo", async (req, res) => {
   try {
     const response = await fetch("https://api.brevo.com/v3/account", {
@@ -46,4 +29,19 @@ router.get("/test-brevo", async (req, res) => {
   }
 });
 
+// existing route
+router.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
+router.use(healthRouter);
+router.use("/events", eventsRouter);
+router.use("/team", teamRouter);
+router.use("/products", productsRouter);
+router.use("/orders", ordersRouter);
+router.use("/admin", adminRouter);
+router.use("/settings", settingsRouter);
+router.use("/volunteer", volunteerRouter);
+router.use("/upload", uploadRouter);
+
+export default router;
