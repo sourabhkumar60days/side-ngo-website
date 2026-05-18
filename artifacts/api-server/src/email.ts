@@ -1,4 +1,3 @@
-
 const NOTIFY_EMAIL = "sidevinayabhawan@gmail.com";
 const SMTP_FROM_ADDR = "side.ngo.official@gmail.com";
 
@@ -100,9 +99,6 @@ Please log into the admin panel to manage this order.
       <span style="font-size:20px;font-weight:bold;color:#e25a87">Total: ₹${Number(order.totalAmount).toLocaleString("en-IN")}</span>
     </div>
   </div>
-  <div style="background:#f5f5f5;padding:16px;text-align:center;font-size:12px;color:#999">
-    SIDE NGO — 19/564 DDA Flats, Vinaya Bhawan, Madangir, New Delhi 110062
-  </div>
 </div>
     `.trim(),
   });
@@ -146,63 +142,18 @@ export async function sendOrderConfirmation(order: {
     text: `
 Dear ${order.fullName},
 
-Thank you for your order inquiry! We have received your request and our team will get in touch with you shortly to confirm availability and arrange delivery.
-
-Order Reference : #${order.id ?? "—"}
-Name            : ${order.fullName}
-Phone           : ${order.phone}
-Delivery Address: ${order.address}
-
-Items:
-${itemsList}
-
-Estimated Total : ₹${Number(order.totalAmount).toLocaleString("en-IN")}
-
-Please note: This is an inquiry confirmation, not a payment receipt. A member of the SIDE team will contact you to complete the order.
-
-With warm regards,
-SIDE NGO
-19/564 DDA Flats, Vinaya Bhawan, Madangir, New Delhi 110062
-sidevinayabhawan@gmail.com
+Thank you for your order inquiry! We have received your request and our team will get in touch with you shortly.
     `.trim(),
     html: `
 <div style="font-family:sans-serif;max-width:600px;margin:auto;border:1px solid #f0e6ef;border-radius:12px;overflow:hidden">
   <div style="background:linear-gradient(135deg,#e25a87,#a78bfa);padding:32px 24px;text-align:center">
     <h1 style="color:#fff;margin:0 0 6px;font-size:22px">Thank You, ${order.fullName}!</h1>
-    <p style="color:rgba(255,255,255,0.85);margin:0;font-size:14px">Your order inquiry has been received</p>
   </div>
   <div style="padding:28px 24px">
-    <p style="color:#444;font-size:14px;line-height:1.6;margin:0 0 20px">
-      We've received your order inquiry and our team will reach out to you shortly to confirm availability and arrange delivery.
-    </p>
-
-    <div style="background:#fdf4fb;border-radius:10px;padding:16px;margin-bottom:20px">
-      <p style="margin:0 0 8px;font-size:12px;color:#a78bfa;font-weight:700;text-transform:uppercase;letter-spacing:0.05em">Order Reference #${order.id ?? "—"}</p>
-      <table style="width:100%;font-size:13px;color:#555;border-collapse:collapse">
-        <tr><td style="padding:4px 0;width:120px;color:#999">Phone</td><td style="padding:4px 0">${order.phone}</td></tr>
-        <tr><td style="padding:4px 0;color:#999">Delivery to</td><td style="padding:4px 0">${order.address}</td></tr>
-      </table>
-    </div>
-
     <h3 style="font-size:14px;color:#333;margin:0 0 10px">Items Ordered</h3>
     <table style="width:100%;font-size:13px;border-collapse:collapse;margin-bottom:16px">
-      <thead>
-        <tr style="background:#fdf4fb">
-          <th style="padding:8px 6px;text-align:left;color:#a78bfa;font-size:11px;text-transform:uppercase">Product</th>
-          <th style="padding:8px 6px;text-align:center;color:#a78bfa;font-size:11px;text-transform:uppercase">Qty</th>
-          <th style="padding:8px 6px;text-align:right;color:#a78bfa;font-size:11px;text-transform:uppercase">Price</th>
-        </tr>
-      </thead>
       <tbody>${itemsHtml}</tbody>
     </table>
-
-    <div style="background:#fdf0f5;border:1px solid #f4c2d6;border-radius:8px;padding:14px;text-align:center;margin-bottom:20px">
-      <span style="font-size:18px;font-weight:bold;color:#e25a87">Estimated Total: ₹${Number(order.totalAmount).toLocaleString("en-IN")}</span>
-    </div>
-
-    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:14px;font-size:13px;color:#92400e">
-      <strong>Please note:</strong> This is an inquiry confirmation, not a payment receipt.
-    </div>
   </div>
 </div>
     `.trim(),
@@ -211,3 +162,69 @@ sidevinayabhawan@gmail.com
   return { sent: true };
 }
 
+export async function sendVolunteerNotification(data: {
+  name: string;
+  email: string;
+  phone: string;
+  area: string;
+  message: string;
+}) {
+  await sendBrevoEmail({
+    to: NOTIFY_EMAIL,
+    subject: `New Volunteer Application from ${data.name}`,
+    text: `
+New Volunteer Application — SIDE NGO
+
+Name    : ${data.name}
+Email   : ${data.email}
+Phone   : ${data.phone}
+Area    : ${data.area}
+
+Message:
+${data.message}
+    `.trim(),
+    html: `
+<div style="font-family:sans-serif;max-width:600px;margin:auto;border:1px solid #eee;border-radius:12px;overflow:hidden">
+  <div style="background:#a78bfa;padding:24px;text-align:center">
+    <h1 style="color:#fff;margin:0;font-size:22px">New Volunteer Application — SIDE NGO</h1>
+  </div>
+  <div style="padding:24px">
+    <table style="width:100%;border-collapse:collapse">
+      <tr><td style="padding:6px 0;color:#666;width:120px">Name</td><td style="padding:6px 0;font-weight:bold">${data.name}</td></tr>
+      <tr><td style="padding:6px 0;color:#666">Email</td><td style="padding:6px 0">${data.email}</td></tr>
+      <tr><td style="padding:6px 0;color:#666">Phone</td><td style="padding:6px 0">${data.phone}</td></tr>
+    </table>
+  </div>
+</div>
+    `.trim(),
+  });
+
+  return { sent: true };
+}
+
+export async function sendVolunteerConfirmation(data: {
+  name: string;
+  email: string;
+  phone: string;
+  area: string;
+  message: string;
+}) {
+  await sendBrevoEmail({
+    to: data.email,
+    subject: `Your volunteer application has been received — SIDE NGO`,
+    text: `
+Dear ${data.name},
+
+Thank you for your interest in volunteering with SIDE NGO!
+    `.trim(),
+    html: `
+<div style="font-family:sans-serif;max-width:600px;margin:auto;border:1px solid #ede9fe;border-radius:12px;overflow:hidden">
+  <div style="background:linear-gradient(135deg,#a78bfa,#e25a87);padding:32px 24px;text-align:center">
+    <h1 style="color:#fff;margin:0 0 6px;font-size:22px">Thank You, ${data.name}!</h1>
+  </div>
+</div>
+    `.trim(),
+  });
+
+  return { sent: true };
+}
