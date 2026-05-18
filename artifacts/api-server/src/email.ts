@@ -1,4 +1,7 @@
 import nodemailer from "nodemailer";
+import dns from "dns";
+
+dns.setDefaultResultOrder("ipv4first");
 
 const NOTIFY_EMAIL = "sidevinayabhawan@gmail.com";
 const SMTP_FROM_ADDR = "side.ngo.official@gmail.com";
@@ -15,6 +18,7 @@ function createTransport() {
     host,
     port,
     secure: port === 465,
+    family: 4,
     auth: { user, pass },
   });
 }
