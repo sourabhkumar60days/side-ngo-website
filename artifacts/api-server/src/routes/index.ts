@@ -27,3 +27,23 @@ router.use("/volunteer", volunteerRouter);
 router.use("/upload", uploadRouter);
 
 export default router;
+
+
+router.get("/test-brevo", async (req, res) => {
+  try {
+    const response = await fetch("https://api.brevo.com/v3/account", {
+      headers: {
+        "api-key": process.env.BREVO_API_KEY!,
+      },
+    });
+
+    const data = await response.json();
+
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+
