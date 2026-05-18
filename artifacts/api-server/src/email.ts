@@ -1,4 +1,4 @@
-const NOTIFY_EMAIL = "side.ngo.official@gmail.com";
+const NOTIFY_EMAIL = "sidevinayabhawan@gmail.com";
 const SMTP_FROM_ADDR = "side.ngo.official@gmail.com";
 
 async function sendBrevoEmail({
