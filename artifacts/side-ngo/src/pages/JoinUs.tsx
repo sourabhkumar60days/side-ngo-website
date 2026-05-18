@@ -73,7 +73,7 @@ export default function JoinUs() {
                 </div>
                 <div>
                   <h4 className="font-bold text-foreground">Phone</h4>
-                  <p className="text-muted-foreground text-sm mt-1">+91  8810549812 | +91 7042136250 | +91 9310852889</p>
+                  <p className="text-muted-foreground text-sm mt-1">+91  8810549812 | +91 8178748737 | +91 9310852889</p>
                 </div>
               </div>
               <div className="flex gap-4">
