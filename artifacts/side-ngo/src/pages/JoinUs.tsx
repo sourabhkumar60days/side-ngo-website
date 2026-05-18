@@ -27,7 +27,7 @@ export default function JoinUs() {
   const onSubmit = async (data: VolunteerForm) => {
     setSubmitError('');
     try {
-      const res = await fetch(apiUrl("/api/volunteer"), {
+      const res = await fetch(apiUrl("/volunteer"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
