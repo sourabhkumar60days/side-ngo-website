@@ -13,20 +13,10 @@ const router: IRouter = Router();
 
 // ✅ test route
 router.get("/test-brevo", async (req, res) => {
-  try {
-    const response = await fetch("https://api.brevo.com/v3/account", {
-      headers: {
-        "api-key": process.env.BREVO_API_KEY!,
-      },
-    });
-
-    const data = await response.json();
-
-    res.json(data);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
-  }
+  res.json({
+    hasKey: !!process.env.BREVO_API_KEY,
+    keyStart: process.env.BREVO_API_KEY?.slice(0, 10),
+  });
 });
 
 // existing route
