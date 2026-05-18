@@ -265,7 +265,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     ) : (
                       <div className="text-sm text-white/70 space-y-0.5">
                         <p>+91  8810549812</p>
-                        <p>+91 7042136250</p>
+                        <p>+91 8178748737</p>
                         <p>+91 9310852889</p>
                       </div>
                     )}
