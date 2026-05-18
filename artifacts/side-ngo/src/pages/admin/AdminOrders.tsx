@@ -34,7 +34,7 @@ export default function AdminOrders() {
   async function updateStatus(id: number, status: string) {
     setUpdating(id);
     try {
-      await fetch(apiUrl(`/api/orders/${id}`), {
+      await fetch(apiUrl(`/orders/${id}`), {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -50,7 +50,7 @@ export default function AdminOrders() {
     if (!confirm('Delete this order permanently?')) return;
     setDeleting(id);
     try {
-      await fetch(apiUrl(`/api/orders/${id}`), {
+      await fetch(apiUrl(`/orders/${id}`), {
         method: 'DELETE',
         credentials: 'include',
       });
