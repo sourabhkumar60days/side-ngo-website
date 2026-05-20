@@ -173,7 +173,7 @@ export default function Home() {
             <div className="max-w-lg">
               <span className="text-primary font-semibold uppercase tracking-wider text-[18px]">Who We Are</span>
               <h2 className="text-3xl md:text-4xl font-display font-bold mt-3 mb-6">
-                Society for Integrated Development Through Empowerment
+                Society for Integrated Development Through Empowerment (SIDE)
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 SIDE is a Society/NGO (Regn. No. S/489/District. South/2011) registered under the Societies Registration Act XXI of 1860. We are founded, run and managed by the SMMI (Salesian Missionaries of Mary Immaculate) sisters, who spread the compassionate love of Jesus through their social ministry.
